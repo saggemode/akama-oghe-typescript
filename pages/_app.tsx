@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Inter } from "next/font/google";
 import { Provider } from "react-redux";
+import { ThemeProvider } from "next-themes";
 import { persistor, store } from "../redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { SessionProvider } from "next-auth/react";
@@ -20,14 +21,17 @@ export default function App({
           refreshInterval: 1000,
           fetcher,
         }}
-      ></SWRConfig>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <div className={inter.className}>
-            <Component {...pageProps} />
-          </div>
-        </PersistGate>
-      </Provider>
+      >
+        <ThemeProvider enableSystem={true} attribute="class">
+          <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+              <div className={inter.className}>
+                <Component {...pageProps} />
+              </div>
+            </PersistGate>
+          </Provider>
+        </ThemeProvider>
+      </SWRConfig>
     </SessionProvider>
   );
 }

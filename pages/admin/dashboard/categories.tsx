@@ -1,5 +1,6 @@
 import Layout from "@/components/admin/layout/Layout";
 import db from "@/utils/db";
+import Link from "next/link";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import Category from "@/models/Category";
@@ -22,6 +23,7 @@ type CategoryDataType = {
 };
 
 const Categories = ({ categories }: any) => {
+  //const { categories, error, isLoading } = getCat(props?.users);
   const [data, setData] = useState(categories);
   const [disabled, setDisabled] = useState(false);
   const router = useRouter();
@@ -47,11 +49,17 @@ const Categories = ({ categories }: any) => {
       cell: (row: CategoryDataType) => (
         <div className="flex items-center justify-start px-2 h-20">
           <button
-            onClick={() => router.push(`/category/update-category/${row?._id}`)}
+            onClick={() => router.push(`/admin/dashboard/category/${row?._id}`)}
             className=" w-20 py-2 mx-2 text-xs text-green-600 hover:text-white my-2 hover:bg-green-600 border border-green-600 rounded transition-all duration-700"
           >
             Update
           </button>
+          {/* <Link
+            className=" text-center w-20 py-2 mx-2 text-xs text-green-600 hover:text-white my-2 hover:bg-green-600 border border-green-600 rounded transition-all duration-700"
+            href={`/admin/category/${row._id}`}
+          >
+            Edit
+          </Link> */}
           <button
             onClick={() => handleDeleteCategory(row?._id)}
             className=" w-20 py-2 mx-2 text-xs text-red-600 hover:text-white my-2 hover:bg-red-600 border border-red-600 rounded transition-all duration-700"
@@ -63,12 +71,12 @@ const Categories = ({ categories }: any) => {
     },
   ];
 
-  const handleDeleteCategory = async (userId: string) => {
+  const handleDeleteCategory = async (catId: string) => {
     setDisabled(true);
     await axios
-      .delete(`/api/admin/users/${userId}`)
+      .delete(`/api/admin/category/${catId}`)
       .then(() => {
-        NormalToast("User deleted");
+        NormalToast("Category deleted");
         setDisabled(false);
       })
       .catch((err) => {
@@ -99,7 +107,7 @@ const Categories = ({ categories }: any) => {
             selectableRows
             selectableRowsHighlight
             persistTableHead
-            //progressPending={isLoading}
+            progressPending={isLoading}
             progressComponent={<Loading />}
             subHeader
             subHeaderComponent={

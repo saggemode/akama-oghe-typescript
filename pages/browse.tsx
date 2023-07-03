@@ -248,7 +248,7 @@ const Browse = ({
 
                     <div
                         ref={el}
-                        className="mt-2 flex flex-wrap gap-3 flex-wrap"
+                        className="mt-2 flex flex-wrap gap-3"
                     >
                         {categories.map((c: any) => (
                             <span

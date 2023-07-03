@@ -20,12 +20,12 @@ const HeaderBottom = ({ handleOpenMenu }: any) => {
                     <li className=""><Link href="">Deals</Link></li>
                     <li className=""><Link href="">Customer Service</Link></li>
                     <li className=""><Link href="">Registery</Link></li>
-                    <li className=""><Link href="">Gift Cards</Link></li>
-                    <li className=""><Link href="">Electoronics</Link></li>
+                    <li className=""><Link href="">Capentry Tools</Link></li>
+                    <li className=""><Link href="">Furniture Tools</Link></li>
                 </ul>
             </div>
             <div className="hidden md:inline text-sm">
-                <a href="">Shop deals in Electronics</a>
+                <a href="">Shop deals in General Goods</a>
             </div>
         </div>
 

@@ -12,10 +12,12 @@ import {
 import AccoridanProduct from "./AccoridanProduct";
 import axios from "axios";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { addToCart, updateCart } from "../../redux/slices/CartSlice";
+import { addToCart, updateCart } from "@/redux/slices/CartSlice";
 import { useSession, signIn } from "next-auth/react";
 import { showDialog } from "@/redux/slices/DialogSlice";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
+import Currency from "react-currency-formatter";
+
 
 const Infos = ({ product, setActiveImg }: any) => {
     const { data: session } = useSession();
@@ -36,7 +38,7 @@ const Infos = ({ product, setActiveImg }: any) => {
         if (qty > product.quantity) {
             setQty(product.quantity);
         }
-    }, [router.query.size]);
+    }, [product.quantity, qty, router.query.size]);
 
     const addToCartHandler = async () => {
         setLoading(true);
@@ -139,7 +141,7 @@ const Infos = ({ product, setActiveImg }: any) => {
                 <div className="text-4xl font-semibold text-red-500">
                     {!size ? `${product.priceRange}` : `${product.price}$`}
                 </div>
-
+                
                 {product.discount > 0 ? (
                     <div className="ml-2  text-slate-400">
                         {size && (

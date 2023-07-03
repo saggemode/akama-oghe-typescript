@@ -9,10 +9,10 @@ import CategoriesProduct from "@/components/Home/CategoriesProduct/CategoriesPro
 import HomeProductSwiper from "@/components/Home/HomeProductSwiper";
 
 export default function Home({ products }: any) {
-  console.log(products);
+  
   return (
     <>
-      <Header title="Full Amazon Clone React" />
+      <Header title="Akama Oghe Stores" />
       <main className="max-w-screen-2xl mx-auto bg-gray-100">
         <CarouselContainer />
         <CategoriesProduct products={products} />

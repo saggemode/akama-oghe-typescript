@@ -4,8 +4,8 @@ import OrderInfo from "@/components/order/OrderInfo";
 import Product from "@/components/order/Product";
 import Total from "@/components/order/Total";
 import UserInfo from "@/components/order/UserInfo";
-import Order from "../../models/Order";
-import { useEffect, useState } from "react";
+import Order from "@/models/Order";
+import {  useState } from "react";
 import DotLoaderSpinner from "@/components/loaders/dotLoader/DotLoaderSpinner";
 
 const OrderPage = ({ order: orderData }: any) => {

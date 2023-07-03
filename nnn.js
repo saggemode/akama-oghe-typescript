@@ -1,22 +1,28 @@
 /** @type {import('tailwindcss').Config} */
 const { spacing } = require("tailwindcss/defaultTheme");
 const { red, blue, neutral } = require("tailwindcss/colors");
-
 module.exports = {
+  //mode: "jit",
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+
+    // Or if using `src` directory:
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: "class",
   theme: {
+    fontFamily: {
+      Poppins: ["Poppins", "sans-serif"],
+      roboto: ["Roboto", "sans-serif"],
+    },
     extend: {
+      gridTemplateColumns: {
+        sidebar: "300px auto", //for sidebar layout
+        "sidebar-collapsed": "64px auto", //for collapsed sidebar layout
+      },
       colors: {
-        amazon: {
-          blue_light: "#232f3e",
-          blue_dark: "#131921",
-          orange: "#febd69",
-        },
         blue: {
           light: "#0a81ab",
           dark: "#0c4271",
@@ -116,7 +122,6 @@ module.exports = {
         },
       }),
     },
-
     screens: {
       xxs: "375px",
       xs: "425px",
@@ -137,7 +142,7 @@ module.exports = {
 
   plugins: [
     //require("@tailwindcss/line-clamp"),
-    require("daisyui"),
+
     require("@tailwindcss/typography")({
       modifiers: [],
     }),
@@ -145,5 +150,4 @@ module.exports = {
       addVariant("inner", "& > *");
     },
   ],
-  //plugins: [require("daisyui")],
 };

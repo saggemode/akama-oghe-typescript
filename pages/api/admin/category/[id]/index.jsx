@@ -19,37 +19,41 @@ const handler = async (req, res) => {
     return res.status(400).send({ message: "Method not allowed" });
   }
 };
+
+
 const getHandler = async (req, res) => {
   await db.connectDb();
   const category = await Category.findById(req.query.id);
   await db.disconnectDb();
   res.send(category);
 };
+
+
 const putHandler = async (req, res) => {
   await db.connect();
-  const user = await User.findById(req.query.id);
-  if (user) {
-    user.name = req.body.name;
+  const category = await Category.findById(req.query.id);
+  if (category) {
+    category.name = req.body.name;
     user.isAdmin = Boolean(req.body.isAdmin);
-    await user.save();
+    await category.save();
     await db.disconnect();
-    res.send({ message: "User Updated Successfully" });
+    res.send({ message: "category Updated Successfully" });
   } else {
     await db.disconnect();
-    res.status(404).send({ message: "User Not Found" });
+    res.status(404).send({ message: "category Not Found" });
   }
 };
 
 const deleteHandler = async (req, res) => {
-  await db.connect();
-  const user = await User.findById(req.query.id);
-  if (user) {
-    await user.remove();
-    await db.disconnect();
-    res.send({ message: "User Deleted" });
+  await db.connectDb();
+  const category = await Category.findById(req.query.id);
+  if (category) {
+    await category.deleteOne();
+    await db.disconnectDb();
+    res.send({ message: "category Deleted" });
   } else {
-    await db.disconnect();
-    res.status(404).send({ message: "User Not Found" });
+    await db.disconnectDb();
+    res.status(404).send({ message: "category Not Found" });
   }
 };
 export default handler;

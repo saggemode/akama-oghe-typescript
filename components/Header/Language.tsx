@@ -1,7 +1,7 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 
-import enFlag from "../../public/assets/images/en-flag.png";
+import enFlag from "@/public/assets/images/en-flag.png";
 
 const Language = () => {
     return ( 
