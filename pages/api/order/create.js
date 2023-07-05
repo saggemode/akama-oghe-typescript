@@ -1,9 +1,9 @@
 import nc from "next-connect";
-import db from "../../../utils/db";
-import User from "../../../models/User";
-import Cart from "../../../models/Cart";
-import Order from "../../../models/Order";
-import auth from "../../../middleware/auth";
+import db from "@/utils/db";
+import User from "@/models/User";
+import Cart from "@/models/Cart";
+import Order from "@/models/Order";
+import auth from "@/middleware/auth";
 
 const handler = nc().use(auth);
 

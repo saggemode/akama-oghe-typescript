@@ -18,6 +18,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/admin/subcategory.jsx", "pages/api/cloudinary/index.js", "utils/db.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/admin/subcategory.jsx", "pages/api/cloudinary/index.js", "utils/db.tsx"],
   "exclude": ["node_modules"]
 }
